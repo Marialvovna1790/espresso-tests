@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Gradle: ru.tinkoff.allure:allure-model:2.5.1@jar">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/ru.tinkoff.allure/allure-model/2.5.1/330c11dcfa17e5634c7a33c552807a3984bd19b3/allure-model-2.5.1.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/ru.tinkoff.allure/allure-model/2.5.1/655e69d9da4d44a093fbf1659bb6d8f38bd542b6/allure-model-2.5.1-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/ru.tinkoff.allure/allure-model/2.5.1/655e69d9da4d44a093fbf1659bb6d8f38bd542b6/allure-model-2.5.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
