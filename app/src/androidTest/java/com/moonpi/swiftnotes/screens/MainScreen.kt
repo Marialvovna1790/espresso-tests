@@ -1,5 +1,6 @@
 package com.moonpi.swiftnotes.screens
 
+import android.support.test.espresso.Espresso
 import android.support.test.espresso.Espresso.onData
 import android.support.test.espresso.Espresso.onView
 import android.support.test.espresso.action.ViewActions.click
@@ -38,9 +39,6 @@ class MainScreen(
             )
     }
 
-    fun clickOverflowMenu() {
-
-    }
 
     fun clickAddNote(): EditNoteScreen {
         onView(withId(addNoteBtn)).perform(click())

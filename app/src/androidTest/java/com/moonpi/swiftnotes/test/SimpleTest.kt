@@ -1,5 +1,6 @@
 package com.moonpi.swiftnotes.test
 
+import android.support.test.espresso.Espresso
 import android.support.test.espresso.Espresso.onView
 import android.support.test.espresso.action.ViewActions.click
 import android.support.test.espresso.assertion.ViewAssertions.matches
@@ -70,6 +71,42 @@ class SimpleTest : AbstractSwiftnotesTest() {
                                 assertNoteWithTextExists(title, body)
                             }
                         }
+                    }
+                }
+            }
+        }
+    }
+
+    @Test
+    @DisplayName("Проверка меню")
+    fun checkMenu() {
+        rule.launchActivity()
+
+        with(ScreenUtils.waitForScreen(MainScreen())) {
+            step("Главное меню") {
+                with(clickOverflowMenu()) {
+                    assertContent(
+                        arrayListOf(
+                            "Backup notes",
+                            "Restore notes",
+                            "Rate app"
+                        )
+                    )
+                    deviceScreenshot("Overflow menu main")
+                    Espresso.pressBack()
+                }
+            }
+
+            step("Меню экрана редактирования ") {
+                with(clickAddNote()) {
+                    deviceScreenshot("Overflow menu edit")
+                    with(clickOverflowMenu()) {
+                        assertContent(
+                            arrayListOf(
+                                "Note font size",
+                                "Hide note body in list"
+                            )
+                        )
                     }
                 }
             }

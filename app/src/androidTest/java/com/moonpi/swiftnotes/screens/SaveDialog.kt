@@ -10,9 +10,9 @@ import android.support.test.espresso.matcher.ViewMatchers.*
 import org.hamcrest.CoreMatchers
 import org.hamcrest.CoreMatchers.allOf
 
-class DialogScreen(val buttonNo: Int = R.id.button2,
-                   val buttonYes: Int = R.id.button1,
-                   val message: Int = R.id.message): BaseScreen(buttonNo, buttonYes, message) {
+class SaveDialog(val buttonNo: Int = R.id.button2,
+                 val buttonYes: Int = R.id.button1,
+                 val message: Int = R.id.message): BaseScreen(buttonNo, buttonYes, message) {
 
     fun assertMessage(expectedText: String) {
         onView(allOf(withId(message), isDisplayed())).check(ViewAssertions.matches(withText(expectedText)))

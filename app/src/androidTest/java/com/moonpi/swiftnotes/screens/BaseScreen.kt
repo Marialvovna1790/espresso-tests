@@ -13,7 +13,7 @@ open class BaseScreen(vararg ids: Int) {
 
     private val viewIds: List<Int> = ids.toList()
 
-    fun matches(): Boolean {
+    open fun matches(): Boolean {
         viewIds.forEach {
             try {
                 Espresso.onView(allOf(withId(it), isDisplayed())).check(ViewAssertions.matches(isDisplayed()))
@@ -23,5 +23,10 @@ open class BaseScreen(vararg ids: Int) {
             }
         }
         return true
+    }
+
+    fun clickOverflowMenu(): MenuDialog {
+        Espresso.openContextualActionModeOverflowMenu()
+        return ScreenUtils.waitForScreen(MenuDialog())
     }
 }

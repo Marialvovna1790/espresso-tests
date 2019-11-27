@@ -16,11 +16,11 @@ class EditNoteScreen(
     private val noteBody: Int = R.id.bodyEdit
 ) : BaseScreen(noteTitle, noteBody) {
 
-    fun goBack(): DialogScreen {
+    fun goBack(): SaveDialog {
         val upButton =
             onView(allOf(instanceOf(ImageButton::class.java), withParent(withId(R.id.toolbarEdit))))
         upButton.perform(click())
-        return ScreenUtils.waitForScreen(DialogScreen())
+        return ScreenUtils.waitForScreen(SaveDialog())
     }
 
     fun assertHints() {
