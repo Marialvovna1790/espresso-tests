@@ -27,6 +27,8 @@ class SwiftnotesRule<out T : Activity> constructor(
         activityTestRule.finishActivity()
     }
 
+    fun activity() = activityTestRule.activity
+
     override fun apply(base: Statement?, description: Description?): Statement {
         return RuleChain.outerRule(failshotRule).around(activityTestRule).apply(base, description)
     }

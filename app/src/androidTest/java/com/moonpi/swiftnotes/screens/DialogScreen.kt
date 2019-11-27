@@ -3,6 +3,7 @@ package com.moonpi.swiftnotes.screens
 import android.R
 import android.support.test.espresso.Espresso
 import android.support.test.espresso.Espresso.onView
+import android.support.test.espresso.ViewInteraction
 import android.support.test.espresso.action.ViewActions
 import android.support.test.espresso.assertion.ViewAssertions
 import android.support.test.espresso.matcher.ViewMatchers.*
@@ -25,11 +26,13 @@ class DialogScreen(val buttonNo: Int = R.id.button2,
         onView(allOf(withId(buttonNo), isDisplayed())).check(ViewAssertions.matches(withText(expectedText)))
     }
 
-    fun clickNo() {
-
+    fun clickNo() : MainScreen {
+        onView(withId(buttonNo)).perform(ViewActions.click())
+        return ScreenUtils.waitForScreen(MainScreen())
     }
 
-    fun clickYes() {
-
+    fun clickYes(): MainScreen {
+        onView(withId(buttonYes)).perform(ViewActions.click())
+        return ScreenUtils.waitForScreen(MainScreen())
     }
 }

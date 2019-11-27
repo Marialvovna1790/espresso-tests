@@ -27,14 +27,51 @@ class SimpleTest : AbstractSwiftnotesTest() {
     val rule = SwiftnotesRule(MainActivity::class.java, false)
 
     @Test
-    @DisplayName("Проверка открытия страницы создания")
-    fun newNoteHints() {
+    @DisplayName("Проверка экрана создания заметки")
+    fun checkEditNoteScreen() {
         rule.launchActivity()
 
         step("Проверяем отображение страницы") {
             with(ScreenUtils.waitForScreen(MainScreen())) {
-                val editScreen = clickAddNote()
-                editScreen.assertHints()
+                with(clickAddNote()) {
+                    assertHints()
+                    val dlg = goBack()
+                    with(dlg) {
+                        assertMessage("Save changes?")
+                        assertOkBtn("Yes")
+                        assertNoBtn("No")
+                        deviceScreenshot("dialog display")
+                        clickNo()
+                    }
+                }
+            }
+        }
+    }
+
+    @Test
+    @DisplayName("Проверка сохранения заметки")
+    fun checkSaveNote() {
+        rule.launchActivity()
+
+        step("Отркытие редактирования заметки") {
+            with(ScreenUtils.waitForScreen(MainScreen())) {
+                with(clickAddNote()) {
+                    step("Редактирование заметки") {
+                        val title = "Test title"
+                        val body = "Test body"
+                        enterBody(body)
+                        enterTitle(title)
+                        deviceScreenshot("entered note")
+                        assertBody(body)
+                        assertTitle(title)
+                        step("Сохранение заметки") {
+                            with(goBack().clickYes()) {
+                                deviceScreenshot("main screen with note")
+                                assertNoteWithTextExists(title, body)
+                            }
+                        }
+                    }
+                }
             }
         }
     }
